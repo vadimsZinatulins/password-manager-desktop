@@ -25,7 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import data.Directory
 import kotlinx.coroutines.launch
-import ui.components.FolderTreeView
+import ui.components.folder_tree_view.FolderTreeView
 
 @Composable
 fun Drawer(
