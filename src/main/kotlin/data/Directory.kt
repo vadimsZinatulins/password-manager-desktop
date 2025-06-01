@@ -10,10 +10,14 @@ class Directory(name: String) {
 
     fun addDirectory(directory: Directory) {
         subDirectories.add(directory)
+
+        DirectoryTracker.markAsDirty()
     }
 
     fun addCredential(credential: Credential) {
         credentials.add(credential)
+
+        DirectoryTracker.markAsDirty()
     }
 
     fun getSubDirectories(): List<Directory> = subDirectories.toList()

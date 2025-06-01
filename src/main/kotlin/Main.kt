@@ -12,6 +12,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import data.Credential
 import data.Directory
+import data.DirectoryTracker
 import functionality.utils.Defaults
 import kotlinx.coroutines.launch
 import ui.components.SettingsDialog
@@ -90,9 +91,11 @@ fun main() = application {
     var isSignedIn by remember { mutableStateOf(true) }
     var epmFilePath by remember { mutableStateOf(Defaults.get(Defaults.DEFAULT_EPM_FILE_PATH)) }
 
+    val isDirty = DirectoryTracker.isDirty
+
     epmFilePath?.let {
         if(isSignedIn) {
-            Window(onCloseRequest = ::exitApplication, title = "Password Manager") {
+            Window(onCloseRequest = ::exitApplication, title = "Password Manager${if (isDirty.value) " *" else ""}") {
                 App()
             }
         } else {

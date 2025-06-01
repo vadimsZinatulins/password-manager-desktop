@@ -9,6 +9,8 @@ class HistoryTrackedField<T>(initialValue: T) {
             val change = FieldChange(LocalDateTime.now(), field, newValue)
             history.add(change)
             field = newValue
+
+            DirectoryTracker.markAsDirty()
         }
 
     fun getHistory(): List<FieldChange<T>> = history.toList()
